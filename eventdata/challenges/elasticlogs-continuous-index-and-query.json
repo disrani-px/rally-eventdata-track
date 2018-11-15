@@ -20,6 +20,11 @@
       "iterations": 1
     },
     {
+      "name": "deleteindex",
+      "operation-type": "delete-index",
+      "index": "{{ index_name | default("elasticlogs_q_write") | tojson }}"
+    },
+    {
       "operation": "create_elasticlogs_q_write",
       "clients": 1,
       "warmup-iterations": 0,
@@ -34,7 +39,7 @@
             "name": "index-append-elasticlogs_q_write-phase1",
             "operation": {
               "operation-type": "bulk",
-              "index": "elasticlogs_q_write",
+              "index": {{ index_name | default("elasticlogs_q_write") | tojson }},
               "param-source": "elasticlogs_bulk",
               "bulk-size": {{ p1_bulk_size | default(1000) | int }}
             },
@@ -69,7 +74,7 @@
             "name": "index-append-elasticlogs_q_write-phase2",
             "operation": {
               "operation-type": "bulk",
-              "index": "elasticlogs_q_write",
+              "index": {{ index_name | default("elasticlogs_q_write") | tojson }},
               "param-source": "elasticlogs_bulk",
               "bulk-size": {{ p2_bulk_size | default(1000) | int }}
             },
