@@ -14,15 +14,14 @@
   },
   "schedule": [
     {
-      "operation": "deleteindex_elasticlogs_q-*",
+      "operation": {
+        "name": "deleteindex",
+        "operation-type": "delete-index",
+        "index": {{ index_name | default("elasticlogs_q_write") | tojson }}
+      },
       "clients": 1,
       "warmup-iterations": 0,
       "iterations": 1
-    },
-    {
-      "name": "deleteindex",
-      "operation-type": "delete-index",
-      "index": "{{ index_name | default("elasticlogs_q_write") | tojson }}"
     },
     {
       "operation": "create_elasticlogs_q_write",
