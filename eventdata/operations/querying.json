@@ -43,7 +43,7 @@
   "operation-type": "kibana",
   "param-source": "elasticlogs_kibana",
   "dashboard":"traffic",
-  "index_pattern": "elasticlogs_*",
+  "index_pattern": {{ index_pattern | default("elasticlogs_*") | tojson }},
   "query_string": "query_string_lists/country_code_query_strings.json",
   "window_end": "now",
   "window_length": "60m"
@@ -53,7 +53,7 @@
   "operation-type": "kibana",
   "param-source": "elasticlogs_kibana",
   "dashboard": "content_issues",
-  "index_pattern": "elasticlogs_*",
+  "index_pattern": {{ index_pattern | default("elasticlogs_*") | tojson }},
   "query_string": "query_string_lists/country_code_query_strings.json",
   "window_end": "now",
   "window_length": "60m"
@@ -63,7 +63,7 @@
   "operation-type": "kibana",
   "param-source": "elasticlogs_kibana",
   "dashboard":"traffic",
-  "index_pattern": "elasticlogs_*",
+  "index_pattern": {{ index_pattern | default("elasticlogs_*") | tojson }},
   "query_string": ["*"],
   "window_end": "now",
   "window_length": "30m"
@@ -73,7 +73,7 @@
   "operation-type": "kibana",
   "param-source": "elasticlogs_kibana",
   "dashboard": "content_issues",
-  "index_pattern": "elasticlogs_*",
+  "index_pattern": {{ index_pattern | default("elasticlogs_*") | tojson }},
   "query_string": ["*"],
   "window_end": "now",
   "window_length": "30m"
